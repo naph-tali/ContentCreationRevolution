@@ -1,0 +1,48 @@
+﻿{
+    \"version\": \"2.0.0\",
+    \"tasks\": [
+        {
+            \"label\": \"Start Revolution Engine\",
+            \"type\": \"shell\",
+            \"command\": \"powershell\",
+            \"args\": [\"-ExecutionPolicy\", \"Bypass\", \"-File\", \"/scripts/vscode_init.ps1\", \"&&\", \"start\"],
+            \"group\": \"build\",
+            \"presentation\": {
+                \"echo\": true,
+                \"reveal\": \"always\",
+                \"focus\": true,
+                \"panel\": \"shared\"
+            },
+            \"problemMatcher\": []
+        },
+        {
+            \"label\": \"Project Health Check\",
+            \"type\": \"shell\", 
+            \"command\": \"powershell\",
+            \"args\": [\"-ExecutionPolicy\", \"Bypass\", \"-File\", \"/scripts/project_manager.ps1\", \"&&\", \"Get-ProjectHealth\"],
+            \"group\": \"test\",
+            \"presentation\": {
+                \"echo\": true,
+                \"reveal\": \"always\"
+            }
+        },
+        {
+            \"label\": \"Update Dependencies\",
+            \"type\": \"shell\",
+            \"command\": \"powershell\", 
+            \"args\": [\"-ExecutionPolicy\", \"Bypass\", \"-File\", \"/scripts/project_manager.ps1\", \"&&\", \"Update-ProjectDependencies\"],
+            \"group\": \"build\",
+            \"presentation\": {
+                \"echo\": true,
+                \"reveal\": \"always\"
+            }
+        },
+        {
+            \"label\": \"Backup Project State\",
+            \"type\": \"shell\",
+            \"command\": \"powershell\",
+            \"args\": [\"-ExecutionPolicy\", \"Bypass\", \"-File\", \"/scripts/project_manager.ps1\", \"&&\", \"Backup-ProjectState\"],
+            \"group\": \"build\"
+        }
+    ]
+}

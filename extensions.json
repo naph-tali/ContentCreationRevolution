@@ -1,0 +1,19 @@
+// .vscode/extensions.json
+{
+  "recommendations": [
+    "ms-python.python",
+    "ms-python.vscode-pylance",
+    "ms-python.black-formatter",
+    "ms-python.flake8",
+    "ms-python.isort",
+    "formulahendry.auto-rename-tag",
+    "christian-kohler.path-intellisense",
+    "ms-vscode.vscode-json",
+    "ms-vscode.makefile-tools",
+    "ms-vscode.hexeditor",
+    "ms-vscode.live-server",
+    "ritwickdey.liveserver",
+    "ms-vscode-remote.remote-ssh",
+    "ms-vscode-remote.remote-containers"
+  ]
+}

@@ -1,0 +1,20 @@
+# requirements.txt
+
+# Build helpers (install first to avoid wheel/build-time errors)
+wheel
+setuptools_scm
+setuptools>=67.0.0
+
+tweepy==4.14.0
+python-dotenv==1.0.0
+# Pillow is installed by the bootstrap script to prefer wheels over building from sdist
+# pillow==10.0.0
+opencv-python==4.8.1.78
+numpy==1.24.3
+requests==2.31.0
+schedule==1.2.0
+colorama==0.4.6
+chardet==5.2.0
+
+# NOTE: Run scripts\install_requirements.bat (Windows) or scripts/install_requirements.sh (Unix)
+# to create the venv and install dependencies (Pillow is installed by the script).

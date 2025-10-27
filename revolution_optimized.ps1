@@ -1,0 +1,3 @@
+﻿# [Content of revolution_optimized.ps1 from above]
+param([int]$CycleDelayMin = 20, [int]$CycleDelayMax = 40)
+# ... [full script content] ...

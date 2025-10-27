@@ -1,0 +1,15 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        
+
+        {
+            "name": "Revolution Engine",
+            "type": "python",
+            "request": "launch",
+            "program": "./ENGINE_CORE/working_revolution_engine.py",
+            "console": "integratedTerminal",
+            "envFile": "./.env"
+        }
+    ]
+}

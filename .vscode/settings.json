@@ -1,0 +1,10 @@
+﻿{
+    "deepseek.environment": "ContentCreationRevolution",
+    "terminal.integrated.defaultProfile.windows": "PowerShell",
+    "python.terminal.activateEnvironment": true,
+    "python.terminal.activateEnvInCurrentTerminal": true,
+    "python.venvPath": "./venv",
+    "files.autoSave": "afterDelay",
+    "files.autoSaveDelay": 1000,
+    "editor.formatOnSave": true
+}

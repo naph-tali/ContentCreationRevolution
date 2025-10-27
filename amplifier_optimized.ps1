@@ -1,0 +1,3 @@
+﻿# [Content of amplifier_optimized.ps1 from above]  
+param([int]$IntervalMinutes = 180)
+# ... [full script content] ...
