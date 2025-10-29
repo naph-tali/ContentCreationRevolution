@@ -1,0 +1,11 @@
+# STEP 1: NAVIGATE TO PARENT DIRECTORY
+cd C:\Users\X\Documents
+
+# STEP 2: CREATE UNIFIED REPOSITORY
+mkdir UCRE_Unified_Repository
+cd UCRE_Unified_Repository
+
+# STEP 3: COPY/MOVE BOTH PROJECTS
+Copy-Item -Path "C:\Users\X\ContentCreationRevolution\*" -Destination "C:\Users\X\Documents\UCRE_Unified_Repository" -Recurse
+# Assuming cosmic-projects is in Documents based on previous context
+Copy-Item -Path "C:\Users\X\Documents\cosmic-projects\*" -Destination "C:\Users\X\Documents\UCRE_Unified_Repository" -Recurse

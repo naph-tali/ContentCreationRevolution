@@ -134,15 +134,15 @@ function Restore-ProjectState {
     
     # Restore files
     Get-ChildItem $backupDir -Recurse | ForEach-Object {
-        $relativePath = $_.FullName.Replace($backupDir, \"..\")
-        $targetDir = Split-Path $relativePath -Parent
+        $targetPath = $_.FullName.Replace($backupDir, \"..\\\")
+        $targetDir = Split-Path $targetPath -Parent
         
         if (-not (Test-Path $targetDir)) {
             New-Item -ItemType Directory -Path $targetDir -Force | Out-Null
         }
         
-        Copy-Item $_.FullName $relativePath -Force
-        Write-Host \"   Restored: $($relativePath -replace '\\.\\./','')\" -ForegroundColor Green
+        Copy-Item -Path $_.FullName -Destination $targetPath -Force
+        Write-Host \"   Restored: $($targetPath -replace '\\.\\./','')\" -ForegroundColor Green
     }
     
     Write-Host \" Project state restored from: $backupDir\" -ForegroundColor Green

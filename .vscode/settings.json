@@ -1,4 +1,4 @@
-﻿{
+{
     "deepseek.environment": "ContentCreationRevolution",
     "terminal.integrated.defaultProfile.windows": "PowerShell",
     "python.terminal.activateEnvironment": true,
@@ -6,5 +6,8 @@
     "python.venvPath": "./venv",
     "files.autoSave": "afterDelay",
     "files.autoSaveDelay": 1000,
-    "editor.formatOnSave": true
+    "editor.formatOnSave": true,
+    "python.analysis.extraPaths": [
+        "./CRE_Integrated"
+    ]
 }
