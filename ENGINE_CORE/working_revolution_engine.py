@@ -69,15 +69,15 @@ class RevolutionEngine:
                 time.sleep(300)
 
     def run_engine(self):
-        \"\"\"Main engine execution loop\"\"\"
-        self.log(\"Starting C-light speed content stream...\", \"LAUNCH\")
+        """Main engine execution loop"""
+        self.log("Starting C-light speed content stream...", "LAUNCH")
         
         # Verify Twitter connection
         try:
             user = self.twitter_service.client.get_me()
-            self.log(f\"Connected as: @{user.data.username}\", \"TWITTER\")
+            self.log(f"Connected as: @{user.data.username}", "TWITTER")
         except Exception as e:
-            self.log(f\"Twitter connection failed: {e}\", \"ERROR\")
+            self.log(f"Twitter connection failed: {e}", "ERROR")
             return
         
         self.display_dashboard()
@@ -95,14 +95,14 @@ class RevolutionEngine:
                     
                     # Optimized delay: 15-45 minutes
                     delay = random.randint(900, 2700)
-                    self.log(f\"Next creation in {delay//60} minutes...\", \"ENGINE\")
+                    self.log(f"Next creation in {delay//60} minutes...", "ENGINE")
                     time.sleep(delay)
                 else:
-                    self.log(\"Waiting 10 minutes after error...\", \"ERROR\")
+                    self.log("Waiting 10 minutes after error...", "ERROR")
                     time.sleep(600)
                     
             except Exception as e:
-                self.log(f\"Engine loop error: {e}\", \"ERROR\")
+                self.log(f"Engine loop error: {e}", "ERROR")
                 self.error_corrector.handle_error(e)
                 time.sleep(600)
 
