@@ -7,6 +7,7 @@ import numpy as np
 from sentence_transformers import SentenceTransformer
 import networkx as nx
 from scipy.spatial.distance import cosine
+from typing import Any
 
 class MathematicalFoundation:
     """
@@ -24,14 +25,13 @@ class MathematicalFoundation:
         
         self.meaning_graphs = {}
         print("ðŸ›ï¸ Mathematical Foundation Initialized")
-    
-    def validate_ucp_principles(self, parent_a, parent_b, child):
+    def validate_ucp_principles(self, parent_a, parent_b, child) -> dict[str, Any]:
         """
         Validate Universal Consciousness Principles for narrative synthesis
         """
         print("   ðŸ“ Running mathematical validation...")
         
-        validation_results = {}
+        validation_results: dict[str, Any] = {}
         
         try:
             # 1. Hilbert Space Validation
@@ -64,6 +64,7 @@ class MathematicalFoundation:
             validation_results
         )
         
+        return validation_results
         return validation_results
     
     def _validate_hilbert_space(self, parent_a, parent_b, child):
@@ -331,5 +332,19 @@ def test_mathematical_foundation():
         print(f"âŒ Mathematical Foundation Test FAILED: {e}")
         return None
 
+def test_huggingface_transformer():
+    """Test HuggingFace sentence transformer loading and encoding"""
+    try:
+        model = SentenceTransformer('all-mpnet-base-v2')
+        print("✅ HuggingFace SentenceTransformer loaded.")
+        emb = model.encode(["Cosmic resonance test"])
+        print(f"✅ Embedding shape: {emb.shape}")
+        print(f"✅ Embedding sample: {emb[0][:8]}...")
+        return True
+    except Exception as e:
+        print(f"❌ HuggingFace transformer test failed: {e}")
+        return False
+
 if __name__ == "__main__":
+    test_huggingface_transformer()
     test_mathematical_foundation()

@@ -15,13 +15,13 @@ if os.path.exists(COSMIC_PATH) and COSMIC_PATH not in sys.path:
 load_dotenv()
 
 class UnifiedCosmicEngineLLM:
-    \"\"\"
-     UNIFIED COSMIC ENGINE WITH DUAL LLM ARCHETYPES
+    """
+    # UNIFIED COSMIC ENGINE WITH DUAL LLM ARCHETYPES
     Integrates:
     - Generative Engine (Resonant Synthesis) 
     - Ethical Oracle (Logos Alignment)
     - Observational Collapse Measurement
-    \"\"\"
+    """
     
     def __init__(self):
         # CCR: Operational Content Creation
@@ -34,7 +34,7 @@ class UnifiedCosmicEngineLLM:
         
         # LLM Integration
         self.llm_oracle = None
-        self.initialize_llm_systems()
+        self._initialize_llm_systems()  # <-- fix: use _initialize_llm_systems (with underscore)
         
         # CRE Metrics with LLM enhancement
         self.eta_meaning = 0.0  # Meaning-generation efficiency
@@ -54,14 +54,14 @@ class UnifiedCosmicEngineLLM:
         
         self.log(\"DUAL LLM COSMIC ENGINE INITIALIZED\", \"COSMIC\")
         
-    def initialize_llm_systems(self):
-        \"\"\"Initialize LLM archetypes\"\"\"
+    def _initialize_llm_systems(self):
+        """Initialize LLM archetypes"""
         try:
             from llm_cosmic_oracle import LLMCosmicOracle
             self.llm_oracle = LLMCosmicOracle()
-            self.log(\"LLM:  DUAL ARCHETYPES ACTIVATED\", \"LLM\")
+            self.log("LLM:  DUAL ARCHETYPES ACTIVATED", "LLM")
         except Exception as e:
-            self.log(f\"LLM:  Initialization failed - {e}\", \"LLM\")
+            self.log(f"LLM:  Initialization failed - {e}", "LLM")
             self.llm_oracle = None
     
     def log(self, message, system=\"UNIFIED\"):
@@ -76,7 +76,7 @@ class UnifiedCosmicEngineLLM:
         print(f\"\\033[{color}m[{timestamp}] [{system}] {message}\\033[0m\")
     
     def generate_llm_enhanced_content(self):
-        \"\"\"Generate content using LLM resonant synthesis\"\"\"
+        #Generate content using LLM resonant synthesis
         
         if self.llm_oracle and len(self.content_memory) >= 2:
             # Use LLM resonant synthesis
@@ -90,7 +90,7 @@ class UnifiedCosmicEngineLLM:
                 # Calculate alignment and collapse
                 self.L_align = self.llm_oracle.logos_alignment(synthesized)
                 self.O_collapse = self.llm_oracle.calculate_observational_collapse(
-                    synthesized, \"cosmic resonance consciousness evolution\"
+                    synthesized, #cosmic resonance consciousness evolution
                 )
                 
                 theme = f\" {synthesized[:100]}... | L_align: {self.L_align:.3f} | #LLMSynthesis\"

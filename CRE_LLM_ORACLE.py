@@ -35,7 +35,7 @@ TARGET_COMMUNITIES = [
 ]
 
 def generate_cosmic_batch(count=10):
-    \"\"\"Generate cosmic content based on our conversation patterns\"\"\"
+    """Generate cosmic content based on our conversation patterns"""
     import random
     batch = []
     for i in range(count):
@@ -58,7 +58,7 @@ def generate_cosmic_batch(count=10):
     return batch
 
 def manual_amplification_protocol():
-    \"\"\"Manual engagement strategy from our DeepSeek conversation\"\"\"
+    """Manual engagement strategy from our DeepSeek conversation"""
     return {
         'daily_targets': {
             'posting': 'Every 60-120 minutes',

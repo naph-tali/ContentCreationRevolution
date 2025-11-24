@@ -13,6 +13,7 @@ from dotenv import load_dotenv
 # Add integration bridge
 sys.path.append('.')
 from CRE_CCR_INTEGRATION_BRIDGE import CosmicIntegrationBridge
+from twitter_service import TwitterService
 
 load_dotenv()
 
@@ -28,7 +29,6 @@ class UnifiedCosmicEngine:
         
         # Initialize Twitter service
         try:
-            from SERVICES.twitter_service import TwitterService
             self.twitter_service = TwitterService()
             print("✅ Twitter Service: INTEGRATED")
         except Exception as e:
@@ -159,7 +159,49 @@ class UnifiedCosmicEngine:
         # Verify systems
         try:
             user = self.twitter_service.client.get_me()
-            self.log(f"Unified connection: @{user.data.username}", "TWITTER")
+            # Safely extract username from possible response shapes
+            username = None
+
+            # Prefer explicit 'data' if present but access it safely
+            data = getattr(user, "data", None)
+
+            # If no 'data', try to parse a JSON body for response-like objects
+            if data is None:
+                try:
+                    # Safely get a json method without direct attribute access on the object
+                    json_method = getattr(user, "json", None)
+                    if callable(json_method):
+                        parsed = json_method()
+                        if isinstance(parsed, dict):
+                            data = parsed
+
+                    # Fallback: if still no data, try to parse a textual body as JSON
+                    if data is None:
+                        text = getattr(user, "text", None)
+                        if isinstance(text, str):
+                            try:
+                                import json as _json
+                                parsed = _json.loads(text)
+                                if isinstance(parsed, dict):
+                                    data = parsed
+                            except Exception:
+                                # ignore parse errors and leave data as None
+                                pass
+                except Exception:
+                    data = None
+
+            # Extract username from dict-like or object-like shapes, try common keys
+            if isinstance(data, dict):
+                username = data.get("username") or data.get("screen_name") or data.get("name")
+            elif data is not None:
+                username = getattr(data, "username", None) or getattr(data, "screen_name", None) or getattr(data, "name", None)
+            else:
+                username = getattr(user, "username", None) or getattr(user, "screen_name", None) or getattr(user, "name", None)
+
+            if username:
+                self.log(f"Unified connection: @{username}", "TWITTER")
+            else:
+                self.log("Unified connection established (username unavailable)", "TWITTER")
         except Exception as e:
             self.log(f"Connection failed: {e}", "ERROR")
             return
@@ -199,6 +241,13 @@ def main():
         engine.run_unified_engine()
     else:
         print(" Engine initialization failed")
+    
+    try:
+        twitter = TwitterService()
+        # Example usage:
+        twitter.post_tweet("🚀 Unified Cosmic Engine: CRE+CCR integration operational!")
+    except Exception as e:
+        print(f"Twitter Service: FAILED - {e}")
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

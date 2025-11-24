@@ -161,3 +161,45 @@ class NarrativeSynthesis:
         if text and text[-1] not in '.!?':
             text += '.'
         return text
+
+# Example: Import and use UltimateHardCore from cosmic-projects
+def generate_ultimate_hard_core_content(parent_a, parent_b):
+    # Add cosmic-projects to sys.path if not already present, then attempt an explicit safe import.
+    import sys, os, importlib, importlib.util
+    cosmic_path = r"C:\Users\X\Documents\cosmic-projects"
+    if cosmic_path not in sys.path and os.path.exists(cosmic_path):
+        sys.path.append(cosmic_path)
+
+    from typing import Optional, Type, Any, cast
+
+    UltimateHardCore: Optional[Type[Any]] = None
+    try:
+        # Check if the module is available before importing to avoid unresolved import errors
+        spec = importlib.util.find_spec("ultimate_hard_core")
+        if spec is not None:
+            module = importlib.import_module("ultimate_hard_core")
+            candidate = getattr(module, "UltimateHardCore", None)
+            # Ensure the retrieved attribute is actually a class/type before assigning
+            if candidate is not None and isinstance(candidate, type):
+                UltimateHardCore = cast(Type[Any], candidate)
+            else:
+                UltimateHardCore = None
+    except Exception:
+        UltimateHardCore = None
+
+    # Provide a lightweight fallback implementation if the real one is not available
+    if UltimateHardCore is None:
+        class UltimateHardCore:
+            def generate_narrative(self, a, b):
+                # Minimal fallback behavior to ensure callers receive a string
+                return f"(fallback) Generated narrative combining: '{a}' and '{b}'"
+
+    try:
+        # Instantiate and generate narrative
+        uhc = UltimateHardCore()
+        content = uhc.generate_narrative(parent_a, parent_b)
+        print(f"UltimateHardCore content: {content}")
+        return content
+    except Exception as e:
+        print(f"Failed to generate narrative with UltimateHardCore: {e}")
+        return None
